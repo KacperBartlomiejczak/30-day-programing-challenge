@@ -3,7 +3,7 @@ import { useState } from "react"
 import PostsList from "./components/PostsList"
 import MainHeader from "./components/MainHeader"
 function App() {
-  const [modalIsVisible, setModalIsVisible] = useState(true)
+  const [modalIsVisible, setModalIsVisible] = useState(false)
 
   function showModalHandler() {
     setModalIsVisible(true)
@@ -14,9 +14,9 @@ function App() {
   }
   return (
     <>
-      <MainHeader onClose={hideModalHandler}></MainHeader>
+      <MainHeader onCreatePost={showModalHandler}></MainHeader>
       <main>
-        <PostsList isPosting={hideModalHandler} />
+        <PostsList isPosting={modalIsVisible} onHideModal={hideModalHandler} />
       </main>
     </>
   )
